@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.solr.dao.ChsDao">
+    <!--查询精选案例列表-->
+    <select id="ChsList" resultType="com.example.solr.entity.Mobile_choiceness" parameterType="string">
+        SELECT chs_id,release_time,viewed,content,like_number,chs_title,chs_author,status
+        FROM mobile_choiceness
+        <where>
+             status=1
+            <if test="chs_title!=null and chs_title!=''">
+                and chs_title like concat('%',#{chs_title},'%')
+            </if>
+        </where>
+        <if test="release_time=='desc'">
+            order by release_time desc
+        </if>
+        <if test="release_time=='asc'">
+            order by release_time asc
+        </if>
+        <if test="release_time=='viewed'">
+            order by viewed desc
+        </if>
+        <if test="release_time=='like_number'">
+            order by like_number desc
+        </if>
+
+
+    </select>
+
+</mapper>

@@ -1,0 +1,18 @@
+server:
+  port: 8222
+
+spring:
+  application:
+    name: solr
+  data:
+    solr:
+     host: http://127.0.0.1:8080/solr/core2
+  datasource:
+    username: tanlei
+    password: root
+    url: jdbc:mysql://192.168.1.15:3306/dny_shop?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.example.solr.entity
